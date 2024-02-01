@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div>
+        <form>
+            <input type="text" placeholder="FullName" id="fullname">
+            <input type="email" placeholder="Email" id="email">
+            <button id="submit_btn">Submit</button>
+        </form>
+
+        <div>
+            <button id="showData">showData</button>
+        </div>
+    </div>
+
+    <script>
+        const submitBtn = document.getElementById("submit_btn");
+
+        submitBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const fullName = document.querySelector('#fullname').value;
+            const email = document.querySelector('#email').value;
+
+            console.log(fullName, email);
+
+            const event = new Event("getFormData", { detail: { name: fullName, email: email } });
+
+            document.addEventListener("getFormData", function (evt) {
+                console.log(evt);
+                alert(JSON.stringify(evt.detail));
+            },);
+
+            document.dispatchEvent(event);
+        });
+
+        // Use this button to trigger the event listener after the event has been dispatched
+        const showBtn = document.getElementById('showData');
+        showBtn.addEventListener("click", function () {
+            // debugger
+            document.addEventListener("getFormData", function (evt) {
+                console.log(evt.detail);
+                alert(JSON.stringify(evt.detail));
+            },);
+        });
+
+
+    </script>
+
+</body>
+
+</html>
