@@ -14,14 +14,23 @@ class PrintEle{
 
         Queue<Integer> q2 = new ArrayDeque<>();
 
-        while(q.size() != 0){
+       System.out.println(q);
+
+       while(q.size() > 0){
             System.out.println(q.peek());
             q2.add(q.poll());
-        }
+       }
 
-        while(q2.size() != 0){
-            q.add(q2.poll());
-        }
+
+       System.out.println(q);
+       
+
+       while(q2.size() > 0){
+        q.add(q2.poll());
+       }
+
+       System.out.println(q);
+
 
     }
 }

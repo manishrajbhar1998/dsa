@@ -6,6 +6,41 @@ class CountSetBit{
 
         int count = 0;
 
+
+        // way 1
+        // for(int i=0;i<32;i++){
+        //     if((n & (1 << i)) != 0){
+        //         count++;
+        //     }
+        // }
+        // System.out.println(count);
+
+        // way 2
+        while(n > 0){
+            if((n & 1) > 0){
+                count++;
+            }
+
+            n = n >> 1;
+        }
+        System.out.println(count);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // way 1
         // for(int i=0;i<32;i++){
 
@@ -15,15 +50,15 @@ class CountSetBit{
         // }
 
         // way 2
-        while(n > 0){
+        // while(n > 0){
 
-            if((n & 1) > 0){
-                count++;
-            }
+        //     if((n & 1) > 0){
+        //         count++;
+        //     }
 
-            n = n >> 1;
-        }
+        //     n = n >> 1;
+        // }
 
-        System.out.println("count :: "+count);
+        // System.out.println("count :: "+count);
     }
 }

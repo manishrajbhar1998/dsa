@@ -62,6 +62,7 @@ class Concept {
     temp.next = newNode;
     System.out.println("=====================");
     printNode(head);
+    
   }
 
   public static void printNode(Node head) {

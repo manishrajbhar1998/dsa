@@ -3,10 +3,10 @@ import java.util.*;
 class PairSumK {
 
   public static void main(String[] args) {
-    // int[] A = {8, 9, 1, -2, 4, 5, 11, -6, 4};
+    int[] A = {8, 9, 1, -2, 4, 5, 11, -6, 4};
 
-    // int n = A.length;
-    // int k = 6;
+    int n = A.length;
+    int k = 6;
 
     // Approch one    nestLoop         // TC = O(n^2)  and SC = O(1)
     // for(int i=0;i<n;i++){
@@ -50,21 +50,40 @@ class PairSumK {
     // System.out.println("pair value not found");
 
     // Approach 4 pointers
-    int[] A = { 3, 7, 8, 11, 14, 19, 20 };
-    int n = A.length;
-    int k = 34;
-    int s = 0, e = n - 1;
-    while (s < e) {
-      int target = A[s] + A[e];
-      if (target == k) {
-        System.out.println(A[s] + " " + A[e]);
-        return;
-      } else if (target > k) {
-        e--;
-      } else {
-        s++;
-      }
+    // int[] A = { 3, 7, 8, 11, 14, 19, 20 };
+    // int n = A.length;
+    // int k = 34;
+
+    int s = 0;
+    int e = n-1;
+
+    while(s < e){
+        int target = A[s] + A[e];
+        if(target == k){
+          System.out.println(A[s]+" "+A[e]);
+          return;
+        }else if(target > k){
+          e--;
+        }else{
+          s++;
+        }
     }
+
+
+
+
+    // int s = 0, e = n - 1;
+    // while (s < e) {
+    //   int target = A[s] + A[e];
+    //   if (target == k) {
+    //     System.out.println(A[s] + " " + A[e]);
+    //     return;
+    //   } else if (target > k) {
+    //     e--;
+    //   } else {
+    //     s++;
+    //   }
+    // }
 
     System.out.println("pair value not found");
   }

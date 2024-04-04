@@ -13,11 +13,15 @@ class UniqueElment {
 
     int ans = 0;
 
-    for (int i = 0; i < ar.length; i++) {
+    for(int i=0;i<ar.length;i++){
       ans = ans ^ ar[i];
-      System.out.println(ans);
     }
 
     System.out.println(ans);
+
+
+
+    
+
   }
 }

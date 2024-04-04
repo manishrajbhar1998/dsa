@@ -9,6 +9,6 @@ class Fibonaci {
   }
 
   public static void main(String[] args) {
-    System.out.println(recursive(10));
+    System.out.println(recursive(6));
   }
 }

@@ -5,7 +5,7 @@ class SumOfDigit {
       return n;
     }
 
-    return (n % 10) + resolve(n / 10);
+    return resolve(n / 10) + (n % 10);
   }
 
   public static void main(String[] args) {
