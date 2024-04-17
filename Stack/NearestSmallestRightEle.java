@@ -10,19 +10,21 @@ class NearestSmallestRightEle{
         Stack<Integer> st = new Stack<>();
 
         for(int i=n-1;i>=0;i--){
-            while(st.size() > 0 && st.peek() >= arr[i]){
+
+            while (!st.isEmpty() && st.peek() >= arr[i]) {
                 st.pop();
             }
-            if(st.size() > 0){
-                ans[i] = st.peek();
-            }else{
+
+            if(st.isEmpty()){
                 ans[i] = -1;
+            }else{
+                ans[i] = st.peek();
             }
+
             st.push(arr[i]);
+
         }
 
-        for(int i=0;i<n;i++){
-            System.out.print(ans[i]+" ");
-        }
+        System.out.println(Arrays.toString(ans));
     }
 }
