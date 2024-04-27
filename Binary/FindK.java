@@ -7,16 +7,15 @@ class FindK {
     int n = arr.length;
     int l = 0, h = n - 1;
 
-    while (l <= h) {
-      int m = (l + h) / 2;
-
-      if (arr[m] == k) {
-        System.out.println(m);
+    while(l <= h){
+      int mid = l + (h - l)/2;
+      if(arr[mid] == k){
+        System.out.println("ans :: "+mid);
         return;
-      } else if (arr[m] > k) {
-        h = m - 1;
-      } else {
-        l = m + 1;
+      }else if(arr[mid] > k){
+        h = mid - 1;
+      }else{
+        l = mid + 1;
       }
     }
 

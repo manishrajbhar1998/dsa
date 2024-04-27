@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 class ProductArrayPuzzel{
 
     public static void main(String[] agrs){
@@ -14,6 +17,7 @@ class ProductArrayPuzzel{
         for(int i=1;i<n;i++){
             prefixProduct[i] = prefixProduct[i-1] * arr[i];
         }
+       
 
         // create suffixPro Array
         suffixProduct[n-1] = arr[n-1];
@@ -21,20 +25,21 @@ class ProductArrayPuzzel{
             suffixProduct[i] = suffixProduct[i+1] * arr[i];
         }
 
+        int[] ans = new int[n];
         for(int i=0;i<n;i++){
 
-            if(i == 0){
-                arr[i] = suffixProduct[i+1];
-            }else if(i== n-1){
-                arr[i] = prefixProduct[i-1];
+            if(i==0){
+                arr[i] = suffixProduct[1];
+            }else if(i == n-1){
+                arr[i] = prefixProduct[n-2];
             }else{
                 arr[i] = prefixProduct[i-1] * suffixProduct[i+1];
             }
         }
 
-        for(int i=0;i<n;i++){
-            System.out.print(arr[i]+" ");
-        }
+        System.out.println(Arrays.toString(arr));
+
+        
 
     }
 }
