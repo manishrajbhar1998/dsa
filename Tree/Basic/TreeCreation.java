@@ -1,4 +1,4 @@
- import java.util.*;
+import java.util.*;
 import java.util.Stack;
 
 class Node {
@@ -144,53 +144,48 @@ class TreeCreation {
   }
 
   static void postOderTraversalWithoutRec(Node root) {
-    
     Stack<Node> st1 = new Stack<>();
     Stack<Node> st2 = new Stack<>();
 
     st1.push(root);
 
-    while(st1.size() != 0){
-
+    while (st1.size() != 0) {
       Node temp = st1.pop();
       st2.push(temp);
 
-      if(temp.left != null){
+      if (temp.left != null) {
         st1.push(temp.left);
       }
 
-      if(temp.right != null){
+      if (temp.right != null) {
         st1.push(temp.right);
       }
     }
 
     while (st2.size() != 0) {
-        Node temp = st2.pop();
-        System.out.print(temp.data+" ");
+      Node temp = st2.pop();
+      System.out.print(temp.data + " ");
     }
-   
   }
 
   public static void main(String[] args) {
     Node root = null;
     root = buildTree(root);
-
-    // levelOrderTraversal(root);
-    // System.out.println();
-    // reversLevelOderTraversal(root);
-
-    // preOderTraversal(root);
-    // System.out.println();
+    preOderTraversal(root);
+    System.out.println();
     // preOderTraversalWithOutRec(root);
 
     // inOderTraversal(root);
     // System.out.println();
     // inOderTraversalWithOutRec(root);
 
-   
-    postOderTraversal(root);
-    System.out.println();
-    postOderTraversalWithoutRec(root);
+    // postOderTraversal(root);
+    // System.out.println();
+    // postOderTraversalWithoutRec(root);
+
+    // levelOrderTraversal(root);
+    // System.out.println();
+    // reversLevelOderTraversal(root);
 
   }
 }
