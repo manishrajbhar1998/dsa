@@ -8,20 +8,42 @@ import java.util.*;
 public class ArrayImplementation {
 
   public static void insert(ArrayList<Integer> al, int val) {
+    System.out.println(al);
     al.add(val);
-    int i = al.size() - 1;
-    while (i > 0) {
-      int pi = (i - 1) / 2;
-      if (al.get(i) < al.get(pi)) {
-        int pval = al.get(pi);
-        int chval = al.get(i);
-        al.set(pi, chval);
-        al.set(i, pval);
+    int i = al.size()-1;
+    while(i > 0){
+      int pi = (i-1)/2;
+      if(al.get(i) < al.get(pi)){
+        int temp = al.get(i);
+        al.set(i,al.get(pi));
+        al.set(pi,temp);
         i = pi;
-      } else {
+      }else{
         break;
       }
     }
+
+
+
+
+
+
+
+
+    // al.add(val);
+    // int i = al.size() - 1;
+    // while (i > 0) {
+    //   int pi = (i - 1) / 2;
+    //   if (al.get(i) < al.get(pi)) {
+    //     int pval = al.get(pi);
+    //     int chval = al.get(i);
+    //     al.set(pi, chval);
+    //     al.set(i, pval);
+    //     i = pi;
+    //   } else {
+    //     break;
+    //   }
+    // }
   }
 
   public static void heapfy(ArrayList<Integer> al, int i) {
@@ -89,11 +111,11 @@ public class ArrayImplementation {
     insert(al, 2);
     System.out.println(al);
 
-    int minEle1 = getMin(al);
-    System.out.println(minEle1);
-    int minEle2 = getMin(al);
-    System.out.println(minEle2);
-    System.out.println(al);
+    // int minEle1 = getMin(al);
+    // System.out.println(minEle1);
+    // int minEle2 = getMin(al);
+    // System.out.println(minEle2);
+    // System.out.println(al);
 
   }
 }
