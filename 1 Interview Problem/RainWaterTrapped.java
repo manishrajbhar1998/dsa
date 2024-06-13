@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class RainWaterTrapped{
 
     public static void main(String[] args){
@@ -12,42 +14,48 @@ class RainWaterTrapped{
         // create prefixMax Array
         prefixMax[0] = buildingHeights[0];
         for(int i=1;i<n;i++){
-            if(buildingHeights[i] > prefixMax[i-1]){
-                prefixMax[i] = buildingHeights[i];
-            }else{
+            if(prefixMax[i-1] > buildingHeights[i]){
                 prefixMax[i] = prefixMax[i-1];
+            }else{
+                prefixMax[i] = buildingHeights[i];
             }
         }
 
-        for(int i=0;i<n;i++){
-            System.out.print(prefixMax[i]+" ");
-        }
-        System.out.println();
+        System.out.println(Arrays.toString(prefixMax));
 
         // create suffixMax Array
         suffixMax[n-1] = buildingHeights[n-1];
         for(int i=n-2;i>=0;i--){
-            if(buildingHeights[i] > suffixMax[i+1]){
-                suffixMax[i] = buildingHeights[i];
-            }else{
+            if(suffixMax[i+1] > buildingHeights[i] ){
                 suffixMax[i] = suffixMax[i+1];
+            }else{
+                suffixMax[i] = buildingHeights[i];
             }
         }
 
-        for(int i=0;i<n;i++){
-            System.out.print(suffixMax[i]+" ");
-        }
-        System.out.println();
+       System.out.println(Arrays.toString(suffixMax));
 
         // finally find trapped water
         // current buildHeight - min of (suffixMax and PrefixMax)
         int totalWaterTrapped = 0;
+
+
         for(int i=0;i<n;i++){
 
-            int midHieght = Math.min(suffixMax[i],prefixMax[i]);
+            int leftBH = prefixMax[i];
+            int rightBH = suffixMax[i];
+            int minB = Math.min(leftBH,rightBH);
 
-            totalWaterTrapped += midHieght - buildingHeights[i];
+            totalWaterTrapped += minB - buildingHeights[i];
+
         }
+
+        // for(int i=0;i<n;i++){
+
+        //     int midHieght = Math.min(suffixMax[i],prefixMax[i]);
+
+        //     totalWaterTrapped += midHieght - buildingHeights[i];
+        // }
 
         System.out.println(totalWaterTrapped);
     }

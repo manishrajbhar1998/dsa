@@ -17,15 +17,15 @@ class LocalMinima {
     int l = 1, h = n - 2;
 
     while (l <= h) {
-      int m = (l + h) / 2;
+      int mid = (l + h) / 2;
 
-      if (A[m] < A[m - 1] && A[m] < A[m + 1]) {
-        System.out.println(A[m]);
+      if(A[mid] < A[mid-1] && A[mid] < A[mid+1]){
+        System.out.print(A[mid]);
         return;
-      } else if (A[m] < A[m - 1] && A[m] > A[m + 1]) {
-        l = m + 1;
-      } else {
-        h = m - 1;
+      }else if(A[mid] > A[mid-1] && A[mid] < A[mid+1] ){
+        l = mid + 1;
+      }else{
+        h = mid - 1;
       }
     }
 

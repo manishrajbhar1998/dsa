@@ -21,13 +21,14 @@ class BasicPairCount {
     // Optimization idea
 
     int pair = 0, g = 0;
-    for (int i = arr.length - 1; i >= 0; i--) {
-      if (arr[i] == 'g') {
-        g++;
-      } else if (arr[i] == 'a') {
-        pair += g;
+
+      for(int i=arr.length-1;i>=0;i--){
+        if(arr[i] == 'g'){
+          g++;
+        }else if(arr[i] == 'a'){
+          pair += g;
+        }
       }
-    }
 
     System.out.println(pair);
   }

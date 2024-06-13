@@ -5,27 +5,29 @@ class PeakEle {
 
     int n = A.length;
 
-    if (n == 1 || A[0] > A[1]) {
-      System.out.println(A[0]);
+    if(n == 1 || A[0] > A[1]){
+      System.out.println(0);
       return;
-    }
-    if (A[n - 1] > A[n - 2]) {
-      System.out.println(A[n - 1]);
+    };
+
+    if(A[n-1] > A[n-2]){
+      System.out.println(n-1);
       return;
-    }
+    };
 
-    int l = 1, h = n - 2;
+    int s = 1;
+    int e = n-2;
 
-    while (l <= h) {
-      int m = (l + h) / 2;
+    while(s <= e){
+      int mid = s + (e-s)/2;
 
-      if (A[m] > A[m - 1] && A[m] > A[m + 1]) {
-        System.out.println(A[m] + " " + m);
+      if(A[mid] > A[mid-1] && A[mid] > A[mid+1]){
+        System.out.println(mid);
         return;
-      } else if (A[m] > A[m - 1] && A[m] < A[m + 1]) {
-        l = m + 1;
-      } else {
-        h = m - 1;
+      }else if(A[mid] < A[mid+1] && A[mid] > A[mid-1]){
+        s = mid + 1;
+      }else{
+        e = mid - 1;
       }
     }
 

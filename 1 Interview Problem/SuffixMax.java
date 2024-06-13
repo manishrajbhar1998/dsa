@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 class SuffixMax{
 
@@ -8,15 +9,12 @@ class SuffixMax{
         int n = arr.length;
 
         for(int i=n-2;i>=0;i--){
-            if(arr[i] < arr[i+1]){
+            
+            if(arr[i+1] > arr[i]){
                 arr[i] = arr[i+1];
             }
         }
 
-        for(int i=0;i<arr.length;i++){
-
-            System.out.print(arr[i]+" ");
-        
-        }
+        System.out.println(Arrays.toString(arr));
     }
 }
