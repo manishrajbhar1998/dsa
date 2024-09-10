@@ -38,4 +38,6 @@ for(let i=0;i<nums.length;i++){
     }
 }
 
+console.log(prefixPro)
+console.log(suffixPro)
 console.log(ans);
