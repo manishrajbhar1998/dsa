@@ -4,91 +4,100 @@ package Basic;
  * Insertion
  */
 
-class Heap {
+public class Insertion {
+  static class Heap {
 
-  int[] arr;
-  int size;
+    int[] arr;
+    int size;
 
-  Heap() {
-    arr = new int[100];
-    size = 0;
-  }
+    Heap(int size) {
+      arr = new int[size];
+      this.size = 0;
+    }
 
-  void insert(int val) {
-    size = size + 1;
-    int index = size;
-    arr[index] = val;
+    void insert(int val) {
 
-    while (index > 1) {
-      int parent = index / 2;
-
-      if (arr[parent] < arr[index]) {
-        int temp = arr[parent];
-        arr[parent] = arr[index];
-        arr[index] = temp;
-        index = parent;
-      } else {
+      if (size >= 10) {
+        System.out.println("Heap overflow");
         return;
       }
-    }
-  }
 
-  void delete(){
+      int index = size;
+      arr[index] = val;
 
-    if(size == 0){
-        System.out.println("Heap is Empty");
-        return;
-    }
+      
+      while (index > 0) {
 
-    arr[1] = arr[size];
-    size--;
-
-    // take it to correct position
-    int i = 1;
-    while(i < size){
-        int leftIndex = 2 * i;
-        int rightIndex = 2 * i + 1;
-
-        if(leftIndex < size && arr[i] < arr[leftIndex]){
-            int temp = arr[i];
-            arr[i] = arr[leftIndex];
-            arr[leftIndex] = temp;
-            i = leftIndex;
-
-        }else if(rightIndex < size && arr[i] < arr[rightIndex]){
-            int temp = arr[i];
-            arr[i] = arr[rightIndex];
-            arr[rightIndex] = temp;
-            i = rightIndex;
+        int par = (index - 1) / 2;
+        if (arr[index] > arr[par]) {
+          int temp = arr[par];
+          arr[par] = arr[index];
+          arr[index] = temp;
+          index = par;
         }else{
-            return;
+          break;
+        }
+      }
+      size++;
+    }
+
+    void delete() {
+
+      if (size == 0) {
+        System.out.println("Heap underflow");
+        return;
+      }
+
+      System.out.println(arr[0] +" is Deleted "+size);
+      arr[0] = arr[size - 1];
+      size--;
+
+      // take it to correct position
+      heapify(0);
+      
+    }
+
+    void heapify(int index){
+
+        int largest = index;
+        int left = index * 2  + 1;
+        int right = index * 2 + 2;
+
+        if(left < size && arr[left] > arr[largest]){
+          largest = left;
+        }
+        if(right < size && arr[right] > arr[largest]){
+          largest = right;
         }
 
+        if(largest != index){
+          int temp = arr[largest];
+          arr[largest] = arr[index];
+          arr[index] = temp;
+          heapify(largest);
+        }
+    }
+
+    void print() {
+      for (int i = 0; i < size; i++) {
+        System.out.print(arr[i] + " ");
+      }
+      System.out.println();
     }
   }
-
-  void print() {
-    for (int i = 1; i <= size; i++) {
-      System.out.print(arr[i]+" ");
-    }
-    System.out.println();
-  }
-}
-
-public class Insertion {
 
   public static void main(String[] args) {
-    Heap h = new Heap();
+
+    Heap h = new Heap(10);
     h.insert(50);
     h.insert(55);
     h.insert(53);
     h.insert(52);
     h.insert(54);
-
+    h.insert(4);
     h.print();
     h.delete();
     h.print();
-
 
   }
 }
