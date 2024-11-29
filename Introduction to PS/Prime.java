@@ -17,11 +17,9 @@ class Prime {
   }
 
   public static void main(String[] args) {
-    int n = 2;
-
-    int count = factor(n);
-
-    if (n == 2) {
+    int n = 10;
+    System.out.println(factor(n));
+    if (factor(n) == 2) {
       System.out.println(n + " is a prime number");
     } else {
       System.out.println(n + " is not a prime number");
